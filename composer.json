@@ -1,0 +1,25 @@
+{
+    "name": "submtd/vinyl-graphics",
+    "description": "Laravel package for custom vinyl graphics store",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Steve Harmeyer",
+            "email": "harmeyersteve@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Submtd\\VinylGraphics\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Submtd\\VinylGraphics\\Providers\\VinylGraphicsServiceProvider"
+            ]
+        }
+    }
+}
