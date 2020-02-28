@@ -3,6 +3,10 @@
 namespace Submtd\VinylGraphics\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Submtd\VinylGraphics\Commands\UserCreate;
+use Submtd\VinylGraphics\Commands\UserList;
+use Submtd\VinylGraphics\Commands\UserUpdate;
+use Submtd\VinylGraphics\Services\UserService;
 use Submtd\VinylGraphics\Services\VinylGraphics;
 
 class VinylGraphicsServiceProvider extends ServiceProvider
@@ -12,10 +16,19 @@ class VinylGraphicsServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        // facade
+        // facades
+        $this->app->bind('user-service', function () {
+            return new UserService();
+        });
         $this->app->bind('vinyl-graphics', function () {
             return new VinylGraphics();
         });
+        // commands
+        $this->commands([
+            UserCreate::class,
+            UserList::class,
+            UserUpdate::class,
+        ]);
     }
 
     /**
