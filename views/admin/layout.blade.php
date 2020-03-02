@@ -7,26 +7,27 @@
         <title>@yield('title')</title>
     </head>
     <body>
-        <ul class="nav justify-content-end">
-            @auth
-            @if(auth()->user()->admin)
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('admin.dashboard') }}">Admin</a>
-                </li>
-            @endif
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('logout') }}">Logout</a>
-            </li>
-            @endauth
-            @guest
-            <li class"nav-item">
-                <a class="nav-link" href="{{ route('login') }}">Login</a>
-            </li>
-            <li class"nav-item">
-                <a class="nav-link" href="{{ route('register') }}">Register</a>
-            </li>
-            @endguest
-        </ul>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('admin.backgrounds') }}">Backgrounds</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('admin.fonts') }}">Fonts</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('admin.orders') }}">Orders</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('admin.customers') }}">Customers</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
         <div class="container mt-5 mb-5">
             @if(request()->session()->has('error'))
                 <div class="alert alert-danger">

@@ -9,7 +9,9 @@
             "email": "harmeyersteve@gmail.com"
         }
     ],
-    "require": {},
+    "require": {
+        "spatie/image": "^1.7"
+    },
     "autoload": {
         "psr-4": {
             "Submtd\\VinylGraphics\\": "src/"

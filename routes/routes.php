@@ -35,9 +35,17 @@ Route::group([
     'middleware' => [
         'web',
         'auth',
-        Submtd\VinylGraphics\Middlware\Admin::class,
+        Submtd\VinylGraphics\Middleware\Admin::class,
     ],
     'namespace' => 'Submtd\VinylGraphics\Controllers\Admin',
 ], function () {
     Route::get('/', 'Dashboard')->name('admin.dashboard');
+    Route::get('backgrounds', 'Backgrounds')->name('admin.backgrounds');
+    Route::match(['get', 'post'], 'backgrounds/add', 'BackgroundsAdd')->name('admin.backgrounds.add');
+    Route::match(['get', 'post'], 'backgrounds/{id}', 'BackgroundsEdit')->name('admin.backgrounds.edit');
+    Route::get('fonts', 'Fonts')->name('admin.fonts');
+    Route::match(['get', 'post'], 'fonts/add', 'FontsAdd')->name('admin.fonts.add');
+    Route::match(['get', 'post'], 'fonts/{id}', 'FontsEdit')->name('admin.fonts.edit');
+    Route::get('orders', 'Orders')->name('admin.orders');
+    Route::get('customers', 'Customers')->name('admin.customers');
 });

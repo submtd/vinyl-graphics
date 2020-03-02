@@ -1,6 +1,6 @@
 <?php
 
-namespace Submtd\VinylGraphics\Middlware;
+namespace Submtd\VinylGraphics\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
