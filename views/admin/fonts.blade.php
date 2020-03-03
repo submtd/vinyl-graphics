@@ -7,7 +7,7 @@
         @foreach($fonts as $font)
             <div class="card mr-4 mb-4" style="width: 200px">
                 <a href="{{ route('admin.fonts.edit', ['id' => $font->id]) }}">
-                    <img class="rounded float-left" src="{{ $font->path }}">
+                    {{ $font->svg }}
                 </a>
                 <div class="card-body">
                     <a href="{{ route('admin.fonts.edit', ['id' => $font->id]) }}">

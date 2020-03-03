@@ -2,12 +2,11 @@
 
 namespace Submtd\VinylGraphics\Models;
 
-use Spatie\Image\Image;
-use Illuminate\Support\Str;
+use Spatie\Image\Image as SpatieImage;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Image\Manipulations;
 
-class BackgroundImage extends Model
+class Image extends Model
 {
     /**
      * Fillable attributes
@@ -46,8 +45,9 @@ class BackgroundImage extends Model
         if (!file_exists(storage_path('app/public') . '/' . $this->filename . '.' . $this->extension)) {
             return null;
         }
-        $image = Image::load(storage_path('app/public') . '/' . $this->filename . '.' . $this->extension);
+        $image = SpatieImage::load(storage_path('app/public') . '/' . $this->filename . '.' . $this->extension);
         $image->fit(Manipulations::FIT_CROP, $width, $height);
+        $image->optimize();
         $image->save(storage_path('app/public') . '/' . $fileName);
         return $path;
     }

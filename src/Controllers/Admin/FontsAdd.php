@@ -19,8 +19,8 @@ class FontsAdd extends Controller
             'font' => 'required|image|mimes:svg|max:2048',
         ]);
         $file = $request->file('font');
-        $fileName = Str::uuid()->toString();
-        $file->storeAs(null, $fileName . '.svg', 'public');
+        $fileName = Str::uuid()->toString() . '.svg';
+        $file->storeAs(null, $fileName, 'public');
         $font = Font::create([
             'name' => $request->get('name'),
             'filename' => $fileName,

@@ -20,6 +20,9 @@
                         <a class="nav-link" href="{{ route('admin.fonts') }}">Fonts</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="{{ route('admin.colors') }}">Colors</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="{{ route('admin.orders') }}">Orders</a>
                     </li>
                     <li class="nav-item">

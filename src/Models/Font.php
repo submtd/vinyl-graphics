@@ -13,7 +13,6 @@ class Font extends Model
     protected $fillable = [
         'name',
         'filename',
-        'extension',
     ];
 
     /**
@@ -21,6 +20,14 @@ class Font extends Model
      */
     public function getPathAttribute()
     {
-        return '/storage/' . $this->filename . '.svg';
+        return '/storage/' . $this->filename;
+    }
+
+    /**
+     * render attribute
+     */
+    public function getRenderAttribute()
+    {
+        return file_get_contents(storage_path('app/public') . '/' . $this->filename);
     }
 }

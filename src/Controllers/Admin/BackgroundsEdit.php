@@ -6,40 +6,40 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Routing\Controller;
-use Submtd\VinylGraphics\Models\BackgroundImage;
+use Submtd\VinylGraphics\Models\Image;
 
 class BackgroundsEdit extends Controller
 {
     public function __invoke(Request $request, $id)
     {
-        if (!$backgroundImage = BackgroundImage::find($id)) {
+        if (!$image = Image::find($id)) {
             abort(404);
         }
         if ($request->has('updated')) {
             $request->validate([
-                'name' => 'required|max:255|unique:background_images,name,' . $backgroundImage->id . ',id',
+                'name' => 'required|max:255|unique:images,name,' . $image->id . ',id',
                 'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             ]);
             if (!$file = $request->file('image')) {
-                $file = new UploadedFile(storage_path('app/public') . '/' . $backgroundImage->filename . '.' . $backgroundImage->extension, $backgroundImage->filename . '.' . $backgroundImage->extension);
+                $file = new UploadedFile(storage_path('app/public') . '/' . $image->filename . '.' . $image->extension, $image->filename . '.' . $image->extension);
             }
             $fileName = Str::uuid()->toString();
             $fileExtension = $file->getClientOriginalExtension();
             $file->storeAs(null, $fileName . '.' . $fileExtension, 'public');
             // unlink all original files
-            if (file_exists(storage_path('app/public') . '/' . $backgroundImage->filename . '.' . $backgroundImage->extension)) {
-                unlink(storage_path('app/public') . '/' . $backgroundImage->filename . '.' . $backgroundImage->extension);
+            if (file_exists(storage_path('app/public') . '/' . $image->filename . '.' . $image->extension)) {
+                unlink(storage_path('app/public') . '/' . $image->filename . '.' . $image->extension);
             }
-            foreach (glob(storage_path('app/public') . '/' . $backgroundImage->filename . '-*.' . $backgroundImage->extension) as $originalFile) {
+            foreach (glob(storage_path('app/public') . '/' . $image->filename . '-*.' . $image->extension) as $originalFile) {
                 unlink($originalFile);
             }
             // update record
-            $backgroundImage->update([
+            $image->update([
                 'name' => $request->get('name'),
                 'filename' => $fileName,
                 'extension' => $fileExtension,
             ]);
         }
-        return view('vinyl-graphics::admin.backgrounds-edit', ['background' => $backgroundImage]);
+        return view('vinyl-graphics::admin.backgrounds-edit', ['background' => $image]);
     }
 }

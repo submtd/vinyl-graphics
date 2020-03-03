@@ -21,16 +21,16 @@ class FontsEdit extends Controller
                 'font' => 'nullable|image|mimes:svg|max:2048',
             ]);
             if (!$file = $request->file('font')) {
-                if (!file_exists(storage_path('app/public') . '/' . $font->filename . '.svg')) {
+                if (!file_exists(storage_path('app/public') . '/' . $font->filename)) {
                     abort(500, 'File doesnt exist');
                 }
-                $file = new UploadedFile(storage_path('app/public') . '/' . $font->filename . '.svg', $font->filename . '.svg');
+                $file = new UploadedFile(storage_path('app/public') . '/' . $font->filename, $font->filename);
             }
-            $fileName = Str::uuid()->toString();
-            $file->storeAs(null, $fileName . '.svg', 'public');
+            $fileName = Str::uuid()->toString() . '.svg';
+            $file->storeAs(null, $fileName, 'public');
             // unlink all original files
-            if (file_exists(storage_path('app/public') . '/' . $font->filename . '.svg')) {
-                unlink(storage_path('app/public') . '/' . $font->filename . '.svg');
+            if (file_exists(storage_path('app/public') . '/' . $font->filename)) {
+                unlink(storage_path('app/public') . '/' . $font->filename);
             }
             // update record
             $font->update([

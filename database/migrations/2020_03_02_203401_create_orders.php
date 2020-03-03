@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBackgroundImages extends Migration
+class CreateOrders extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,8 @@ class CreateBackgroundImages extends Migration
      */
     public function up()
     {
-        Schema::create('background_images', function (Blueprint $table) {
+        Schema::create('orders', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name')->unique();
-            $table->string('filename')->unique();
-            $table->string('extension');
             $table->timestamps();
         });
     }
@@ -29,6 +26,6 @@ class CreateBackgroundImages extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('background_images');
+        Schema::dropIfExists('orders');
     }
 }
