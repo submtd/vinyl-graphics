@@ -21,7 +21,8 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Submtd\\VinylGraphics\\Providers\\VinylGraphicsServiceProvider"
+                "Submtd\\VinylGraphics\\Providers\\VinylGraphicsServiceProvider",
+                "Submtd\\VinylGraphics\\Providers\\VinylGraphicsEventServiceProvider"
             ]
         }
     }
