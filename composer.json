@@ -10,6 +10,7 @@
         }
     ],
     "require": {
+        "doctrine/dbal": "^2.10",
         "spatie/image": "^1.7"
     },
     "autoload": {

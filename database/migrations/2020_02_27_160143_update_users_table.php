@@ -14,6 +14,7 @@ class UpdateUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
+            $table->string('name')->nullable()->change();
             $table->boolean('admin')->after('email_verified_at')->default(false);
             $table->boolean('enabled')->after('admin')->default(true);
             $table->timestamp('last_login_at')->after('updated_at')->nullable()->index();
