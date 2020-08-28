@@ -16,7 +16,7 @@ class CreateFonts extends Migration
         Schema::create('fonts', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name')->unique();
-            $table->string('filename')->unique();
+            $table->text('svg');
             $table->timestamps();
         });
     }

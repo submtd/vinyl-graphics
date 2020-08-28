@@ -17,6 +17,7 @@ class CreateColors extends Migration
             $table->bigIncrements('id');
             $table->string('name')->unique();
             $table->string('color_code');
+            $table->string('type');
             $table->timestamps();
         });
     }

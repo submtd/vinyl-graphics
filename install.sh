@@ -1,5 +1,5 @@
 #!/bin/bash
-npm install
+#npm install
 if [ $# -eq 0 ] ; then
     npm run dev
 elif [ $1 == "production" ] ; then

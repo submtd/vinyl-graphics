@@ -1,11 +1,11 @@
 <?php
 
-namespace Submtd\VinylGraphics\Controllers\Admin;
+namespace Submtd\VinylGraphics\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
-class Orders extends Controller
+class AdminOrders extends Controller
 {
     public function __invoke(Request $request)
     {

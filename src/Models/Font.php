@@ -7,27 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class Font extends Model
 {
     /**
-     * Fillable attributes
-     * @var array $fillable
+     * Fillable attributes.
+     * @var array
      */
     protected $fillable = [
         'name',
-        'filename',
+        'svg',
     ];
-
-    /**
-     * path attribute
-     */
-    public function getPathAttribute()
-    {
-        return '/storage/' . $this->filename;
-    }
-
-    /**
-     * render attribute
-     */
-    public function getRenderAttribute()
-    {
-        return file_get_contents(storage_path('app/public') . '/' . $this->filename);
-    }
 }

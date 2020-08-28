@@ -1,36 +1,36 @@
 <?php
 
-namespace Submtd\VinylGraphics\Controllers\Admin;
+namespace Submtd\VinylGraphics\Controllers;
 
-use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Str;
 use Submtd\VinylGraphics\Models\Image;
 
-class BackgroundsEdit extends Controller
+class AdminBackgroundsEdit extends Controller
 {
     public function __invoke(Request $request, $id)
     {
-        if (!$image = Image::find($id)) {
+        if (! $image = Image::find($id)) {
             abort(404);
         }
         if ($request->has('updated')) {
             $request->validate([
-                'name' => 'required|max:255|unique:images,name,' . $image->id . ',id',
+                'name' => 'required|max:255|unique:images,name,'.$image->id.',id',
                 'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             ]);
-            if (!$file = $request->file('image')) {
-                $file = new UploadedFile(storage_path('app/public') . '/' . $image->filename . '.' . $image->extension, $image->filename . '.' . $image->extension);
+            if (! $file = $request->file('image')) {
+                $file = new UploadedFile(storage_path('app/public').'/'.$image->filename.'.'.$image->extension, $image->filename.'.'.$image->extension);
             }
             $fileName = Str::uuid()->toString();
             $fileExtension = $file->getClientOriginalExtension();
-            $file->storeAs(null, $fileName . '.' . $fileExtension, 'public');
+            $file->storeAs(null, $fileName.'.'.$fileExtension, 'public');
             // unlink all original files
-            if (file_exists(storage_path('app/public') . '/' . $image->filename . '.' . $image->extension)) {
-                unlink(storage_path('app/public') . '/' . $image->filename . '.' . $image->extension);
+            if (file_exists(storage_path('app/public').'/'.$image->filename.'.'.$image->extension)) {
+                unlink(storage_path('app/public').'/'.$image->filename.'.'.$image->extension);
             }
-            foreach (glob(storage_path('app/public') . '/' . $image->filename . '-*.' . $image->extension) as $originalFile) {
+            foreach (glob(storage_path('app/public').'/'.$image->filename.'-*.'.$image->extension) as $originalFile) {
                 unlink($originalFile);
             }
             // update record
@@ -40,6 +40,7 @@ class BackgroundsEdit extends Controller
                 'extension' => $fileExtension,
             ]);
         }
+
         return view('vinyl-graphics::admin.backgrounds-edit', ['background' => $image]);
     }
 }

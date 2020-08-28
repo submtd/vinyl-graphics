@@ -10,6 +10,7 @@
         }
     ],
     "require": {
+        "cartalyst/stripe-laravel": "^12.0",
         "doctrine/dbal": "^2.10",
         "spatie/image": "^1.7"
     },

@@ -2,7 +2,7 @@
 @section('title', 'Add Font')
 @section('content')
     <h1>Add Font</h1>
-    <form method="post" enctype="multipart/form-data">
+    <form method="post">
         <div class="form-group">
             <label for="name">Name</label>
             @error('name')
@@ -11,11 +11,11 @@
             <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" placeholder="Name" value="{{ old('name') }}">
         </div>
         <div class="form-group">
-            <label for="font">SVG File</label>
+            <label for="font">SVG</label>
             @error('font')
                 <small class="form-text alert alert-danger">{{ $message }}</small>
             @enderror
-            <input type="file" class="form-control-file @error('font') is-invalid @enderror" id="font" name="font" placeholder="Font">
+            <textarea class="form-control @error('font') is-invalid @enderror" id="font" name="font" rows="20"></textarea>
         </div>
         <button type="submit" class="btn btn-primary">Upload</button>
         @csrf

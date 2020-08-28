@@ -12,7 +12,7 @@
         "cross-env": "^5.1",
         "jquery": "^3.2",
         "laravel-mix": "^5.0.1",
-        "lodash": "^4.17.13",
+        "lodash": "^4.17.15",
         "popper.js": "^1.12",
         "resolve-url-loader": "^2.3.1",
         "sass": "^1.15.2",
@@ -20,5 +20,7 @@
         "vue": "^2.6.11",
         "vue-template-compiler": "^2.6.11"
     },
-    "dependencies": {}
+    "dependencies": {
+        "vuex": "^3.4.0"
+    }
 }

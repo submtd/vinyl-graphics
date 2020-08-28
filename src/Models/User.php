@@ -18,6 +18,8 @@ abstract class User extends Authenticatable
         'name',
         'email',
         'password',
+        'admin',
+        'last_login_at',
     ];
 
     /**
@@ -40,4 +42,12 @@ abstract class User extends Authenticatable
         'admin' => 'boolean',
         'last_login_at' => 'datetime',
     ];
+
+    /**
+     * Has many addresses.
+     */
+    public function addresses()
+    {
+        return $this->hasMany(Address::class);
+    }
 }

@@ -23,6 +23,11 @@ window.axios = require('axios');
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
+import Vue from 'vue';
+window.vue = Vue;
+
+//Vue.component('order-builder', require('./components/OrderBuilder.vue').default);
+
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
  * for events that are broadcast by Laravel. Echo and event broadcasting

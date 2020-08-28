@@ -2,6 +2,8 @@
 
 namespace Submtd\VinylGraphics\Subscribers;
 
+use Carbon\Carbon;
+
 class UserEventSubscriber
 {
     /**
@@ -10,6 +12,7 @@ class UserEventSubscriber
      */
     public function handleUserLogin($event)
     {
+        $event->user->update(['last_login_at' => Carbon::now()]);
     }
 
     /**

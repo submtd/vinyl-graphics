@@ -1,6 +1,6 @@
 <?php
 
-namespace Submtd\VinylGraphics\Controllers\WebPublic;
+namespace Submtd\VinylGraphics\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
@@ -8,12 +8,12 @@ use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
-class Register extends Controller
+class PublicRegister extends Controller
 {
     public function __invoke(Request $request)
     {
-        if (!Auth::user()) {
-            if (!$request->has('email')) {
+        if (! Auth::user()) {
+            if (! $request->has('email')) {
                 return view('vinyl-graphics::public.register');
             }
             $request->validate([
@@ -28,6 +28,7 @@ class Register extends Controller
             Auth::login($user);
             $request->session()->flash('status', 'User account has been created');
         }
+
         return response()->redirectTo(route('home'));
     }
 }

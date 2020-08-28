@@ -15,6 +15,12 @@ class CreateOrders extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->bigIncrements('user_id')->nullable()->index();
+            $table->bigIncrements('shipping_address_id')->nullable()->index();
+            $table->bigIncrements('billing_address_id')->nullable()->index();
+            $table->boolean('placed')->default(false)->index();
+            $table->boolean('processed')->default(false)->index();
+            $table->boolean('shipped')->default(false)->index();
             $table->timestamps();
         });
     }

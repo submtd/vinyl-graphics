@@ -17,6 +17,16 @@
             @enderror
             <input type="text" class="form-control @error('color_code') is-invalid @enderror" id="color_code" name="color_code" placeholder="Color Code" value="{{ old('color_code') }}">
         </div>
+        <div class="form-group">
+            <label for="type">Type</label>
+            @error('type')
+                <small class="form-text alert alert-danger">{{ $message }}</small>
+            @enderror
+            <select class="form-control @error('type') is-invalid @enderror" id="type" name="type">
+                <option value="vinyl">Vinyl</option>
+                <option value="print">Print</option>
+            </select>
+        </div>
         <button type="submit" class="btn btn-primary">Add</button>
         @csrf
     </form>
