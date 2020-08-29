@@ -21,6 +21,7 @@ Route::group([
     Route::match(['get', 'post'], 'register', 'PublicRegister')->name('register');
     Route::get('cart', 'PublicCart')->name('cart');
     Route::match(['get', 'post'], 'checkout', 'PublicCheckout')->name('checkout');
+    Route::match(['get', 'post'], 'payment', 'PublicPayment')->name('payment');
 
     /*
      * Api routes

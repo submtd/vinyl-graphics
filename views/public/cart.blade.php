@@ -43,9 +43,11 @@
         <div class="col-sm">
             <a class="btn btn-secondary btn-lg btn-block" href="{{ route('home') }}">Continue Shopping</a>
         </div>
-        <div class="col-sm">
-            <a class="btn btn-primary btn-lg btn-block" href="{{ route('checkout') }}">Checkout</a>
-        </div>
+        @if(count($items))
+            <div class="col-sm">
+                <a class="btn btn-primary btn-lg btn-block" href="{{ route('checkout') }}">Checkout</a>
+            </div>
+        @endif
     </div>
 </div>
 @endsection
