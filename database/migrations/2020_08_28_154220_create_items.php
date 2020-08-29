@@ -18,7 +18,7 @@ class CreateItems extends Migration
             $table->bigInteger('order_id')->index();
             $table->bigInteger('font_id')->index();
             $table->bigInteger('color_id')->index();
-            $table->bigInteger('background_color_id')->index();
+            $table->bigInteger('border_color_id')->index();
             $table->string('text');
             $table->integer('quantity');
             $table->timestamps();

@@ -14,7 +14,15 @@ class CreateAddresses extends Migration
     public function up()
     {
         Schema::create('addresses', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->id('id');
+            $table->bigInteger('user_id')->nullable()->index();
+            $table->string('address_1');
+            $table->string('address_2')->nullable();
+            $table->string('city');
+            $table->string('state');
+            $table->string('zip');
+            $table->boolean('primary_billing')->index();
+            $table->boolean('primary_shipping')->index();
             $table->timestamps();
         });
     }

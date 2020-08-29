@@ -14,8 +14,13 @@ Route::group([
      * Public routes
      */
     Route::get('/', 'PublicHome')->name('home');
+    Route::post('add', 'PublicAdd')->name('add');
+    Route::get('delete/{id}', 'PublicDelete')->name('delete');
+    Route::get('edit/{id}', 'PublicEdit')->name('edit');
     Route::match(['get', 'post'], 'login', 'PublicLogin')->name('login');
     Route::match(['get', 'post'], 'register', 'PublicRegister')->name('register');
+    Route::get('cart', 'PublicCart')->name('cart');
+    Route::match(['get', 'post'], 'checkout', 'PublicCheckout')->name('checkout');
 
     /*
      * Api routes

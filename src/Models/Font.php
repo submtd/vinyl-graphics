@@ -13,5 +13,6 @@ class Font extends Model
     protected $fillable = [
         'name',
         'svg',
+        'cost_multiplier',
     ];
 }

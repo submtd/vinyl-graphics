@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateImages extends Migration
+class AddCostMultiplierToFonts extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,8 @@ class CreateImages extends Migration
      */
     public function up()
     {
-        Schema::create('images', function (Blueprint $table) {
-            $table->id('id');
-            $table->string('name')->unique();
-            $table->string('filename')->unique();
-            $table->string('extension');
-            $table->timestamps();
+        Schema::table('fonts', function (Blueprint $table) {
+            $table->float('cost_multiplier')->after('svg')->default(1);
         });
     }
 
@@ -29,6 +25,8 @@ class CreateImages extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('background_images');
+        Schema::table('fonts', function (Blueprint $table) {
+            $table->dropColumn('cost_multiplier');
+        });
     }
 }

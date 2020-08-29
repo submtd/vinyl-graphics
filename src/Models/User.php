@@ -50,4 +50,12 @@ abstract class User extends Authenticatable
     {
         return $this->hasMany(Address::class);
     }
+
+    /**
+     * Has many orders.
+     */
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
 }

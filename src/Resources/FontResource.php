@@ -18,6 +18,7 @@ class FontResource extends JsonResource
             'attributes' => [
                 'name' => $this->name,
                 'svg' => $this->svg,
+                'cost_multiplier' => $this->cost_multiplier,
             ],
         ];
     }

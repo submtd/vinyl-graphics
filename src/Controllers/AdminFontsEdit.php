@@ -16,12 +16,14 @@ class AdminFontsEdit extends Controller
         if ($request->has('name')) {
             $request->validate([
                 'name' => 'required|max:255|unique:fonts,name,'.$font->id.',id',
-                'font' => 'nullable',
+                'font' => 'required',
+                'cost_multiplier' => 'required|numeric',
             ]);
             // update record
             $font->update([
                 'name' => $request->get('name'),
-                'svg' => $request->get('font') ?? $font->svg,
+                'svg' => $request->get('font'),
+                'cost_multiplier' => $request->get('cost_multiplier'),
             ]);
         }
 

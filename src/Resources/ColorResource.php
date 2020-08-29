@@ -20,6 +20,10 @@ class ColorResource extends JsonResource
                 'color_code' => $this->color_code,
                 'type' => $this->type,
                 'display' => $this->name.' ('.$this->type.')',
+                'cost_per_character' => $this->cost_per_character,
+                'border_cost_per_character' => $this->border_cost_per_character,
+                'enabled_for_color' => $this->enabled_for_color,
+                'enabled_for_border' => $this->enabled_for_border,
             ],
         ];
     }

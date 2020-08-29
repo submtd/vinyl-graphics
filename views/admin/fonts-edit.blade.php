@@ -20,6 +20,13 @@
             @enderror
             <textarea class="form-control @error('font') is-invalid @enderror" id="font" name="font" rows="20">{!! $font->svg !!}</textarea>
         </div>
+        <div class="form-group">
+            <label for="cost_multiplier">Cost Multiplier</label>
+            @error('cost_multiplier')
+                <small class="form-text alert alert-danger">{{ $message }}</small>
+            @enderror
+            <input type="text" class="form-control @error('cost_multiplier') is-invalid @enderror" id="cost_multiplier" name="cost_multiplier" placeholder="Cost Multiplier" value="{{ $font->cost_multiplier }}">
+        </div>
         <button type="submit" class="btn btn-primary">Update</button>
         @csrf
     </form>

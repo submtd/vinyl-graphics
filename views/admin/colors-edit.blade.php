@@ -30,6 +30,34 @@
                 <option value="print" {{ $color->type == 'print' ? 'selected' : '' }}>Print</option>
             </select>
         </div>
+        <div class="form-group">
+            <label for="cost_per_character">Cost per character</label>
+            @error('cost_per_character')
+                <small class="form-text alert alert-danger">{{ $message }}</small>
+            @enderror
+            <input type="text" class="form-control @error('cost_per_character') is-invalid @enderror" id="cost_per_character" name="cost_per_character" placeholder="Cost per character" value="{{ $color->cost_per_character }}">
+        </div>
+        <div class="form-group">
+            <label for="border_cost_per_character">Border cost per character</label>
+            @error('border_cost_per_character')
+                <small class="form-text alert alert-danger">{{ $message }}</small>
+            @enderror
+            <input type="text" class="form-control @error('border_cost_per_character') is-invalid @enderror" id="border_cost_per_character" name="border_cost_per_character" placeholder="Border cost per character" value="{{ $color->border_cost_per_character }}">
+        </div>
+        <div class="form-group">
+            <label for="enabled_for_color">Enabled for color</label>
+            <select class="form-control @error('enabled_for_color') is-invalid @enderror" id="enabled_for_color" name="enabled_for_color">
+                <option value="1"{{ $color->enabled_for_color == 1 ? ' selected' : ''}}>True</option>
+                <option value="0"{{ $color->enabled_for_color == 0 ? ' selected' : ''}}>False</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="enabled_for_border">Enabled for border</label>
+            <select class="form-control @error('enabled_for_border') is-invalid @enderror" id="enabled_for_border" name="enabled_for_border">
+                <option value="1"{{ $color->enabled_for_border == 1 ? ' selected' : ''}}>True</option>
+                <option value="0"{{ $color->enabled_for_border == 0 ? ' selected' : ''}}>False</option>
+            </select>
+        </div>
         <button type="submit" class="btn btn-primary">Update</button>
         <input type="hidden" name="updated" value="1">
         @csrf

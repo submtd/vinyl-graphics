@@ -6,10 +6,13 @@ let app = new vue({
 
     data: {
         colors: [],
+        borderColors: [],
         fonts: [],
         selectedColor: null,
         selectedBorderColor: null,
-        selectedFont: null
+        selectedFont: null,
+        text: '',
+        quantity: 1
     },
 
     computed: {
@@ -33,6 +36,11 @@ let app = new vue({
             return this.fonts.find(function(font) {
                 return font.id === app.selectedFont;
             });
+        },
+
+        price: function() {
+            var chars = this.text.length;
+            return (chars * this.color.attributes.cost_per_character) + (chars * this.borderColor.attributes.border_cost_per_character) * this.font.attributes.cost_multiplier * this.quantity;
         }
 
     },
@@ -65,13 +73,18 @@ let app = new vue({
             var app = this;
             axios.get('/api/v1/colors').then(response => {
                 response.data.data.forEach(function(item) {
-                    if(app.selectedColor == null) {
+                    if(app.selectedColor == null && item.attributes.enabled_for_color) {
                         app.selectedColor = item.id;
                     }
-                    else if(app.selectedBorderColor == null) {
+                    else if(app.selectedBorderColor == null && item.attributes.enabled_for_border) {
                         app.selectedBorderColor = item.id;
                     }
-                    app.colors.push(item);
+                    if(item.attributes.enabled_for_color) {
+                        app.colors.push(item);
+                    }
+                    if(item.attributes.enabled_for_border) {
+                        app.borderColors.push(item);
+                    }
                 });
             }).catch(error => {
                 console.log(error);
