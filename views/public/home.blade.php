@@ -3,7 +3,7 @@
 @section('content')
 <div class="container" id="app">
     <div class="order-image" id="order-image">
-        <img src="{{ $image->resize(800, 600) }}">
+        <img src="{{ $image->resize(800, 600) }}" class="img-fluid">
     </div>
     <div v-if="typeof font !== 'undefined'" class="selected-font" id="selected-font" v-html="font.attributes.svg">
     </div>

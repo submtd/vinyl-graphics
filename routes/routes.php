@@ -67,6 +67,7 @@ Route::group([
         Route::match(['get', 'post'], 'admin/colors/{id}', 'AdminColorsEdit')->name('admin.colors.edit');
         // orders
         Route::get('admin/orders', 'AdminOrders')->name('admin.orders');
+        Route::match(['get', 'post'], 'admin/orders/{id}', 'AdminOrder')->name('admin.order');
         // customers
         Route::get('admin/customers', 'AdminCustomers')->name('admin.customers');
     });

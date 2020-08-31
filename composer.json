@@ -12,7 +12,8 @@
     "require": {
         "cartalyst/stripe-laravel": "^12.0",
         "doctrine/dbal": "^2.10",
-        "spatie/image": "^1.7"
+        "spatie/image": "^1.7",
+        "submtd/laravel-request-scope": "^1.0"
     },
     "autoload": {
         "psr-4": {
